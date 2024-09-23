@@ -15,7 +15,7 @@ Route::post('/register',[APIcontroller::class,'register']);
 
 Route::group([
     "middleware"=>['auth:api']
-].function(){
+],function(){
     Route::get('/profile',[APIcontroller::class,'profile']);
     Route::get('/logout',[APIcontroller::class,'logout']);
 });
