@@ -90,7 +90,19 @@ class APIcontroller extends Controller
     }
     //these 2 are protected method and need token
     public function profile(Request $request) {
-        
+        $user_data=auth()->user();
+        return response()->json([
+            'status' => true,
+            'message' => "your data",
+            'data' => $user_data
+        ]);
     }
-    public function logout(Request $request) {}
+    public function logout(Request $request) {
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'status' => true,
+            'message' => "Used deleted",
+            'data' => []
+        ]);
+    }
 }
